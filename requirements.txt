@@ -1,0 +1,17 @@
+# HK-Fuse Python dependencies (Python 3.10)
+# Install CUDA-enabled PyTorch first, as described in README.md:
+#   torch==2.5.1+cu121, torchvision==0.20.1+cu121, torchaudio==2.5.1+cu121
+# Install the bundled Flash Linear Attention package separately:
+#   pip install -e flash-linear-attention-main
+
+numpy==2.2.6
+scipy==1.15.3
+pandas==2.3.3
+nibabel==5.3.3
+MedPy  # required by preprocess.py; version not available in supplied environment listing
+einops==0.8.1
+hilbertcurve==2.0.5
+PyYAML==6.0.3
+wandb==0.23.1
+transformers==4.57.3
+triton==3.1.0
