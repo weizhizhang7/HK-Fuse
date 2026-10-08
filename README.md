@@ -1,5 +1,7 @@
 # HK-Fuse
 
+**📄 Paper:** [HK-Fuse (MICCAI 2026)](https://papers.miccai.org/miccai-2026/paper/5288_paper.pdf)
+
 HK-Fuse is an incomplete-modality brain tumor segmentation framework for multi-modal MRI. The model uses modality-specific encoders, intra-modal transformer attention, HK-Block based cross-modal fusion, KVR-based key-voxel skip fusion, and bottleneck inter-transformer refinement.
 
 ## Architecture
