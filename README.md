@@ -2,6 +2,27 @@
 
 HK-Fuse is an incomplete-modality brain tumor segmentation framework for multi-modal MRI. The model uses modality-specific encoders, intra-modal transformer attention, HK-Block based cross-modal fusion, KVR-based key-voxel skip fusion, and bottleneck inter-transformer refinement.
 
+## Architecture
+
+HK-Fuse combines modality-specific encoders, HK-Block-based cross-modal fusion, and Key-Voxel Routing (KVR) for skip-level fusion. The overall network architecture is illustrated below.
+
+![Overview of the HK-Fuse architecture](architecture.png)
+
+## Dataset and Experimental Setup
+
+Following [IM-Fuse](https://github.com/AImageLab-zip/MiMoSe/tree/main/IMFuse), we adopt the same **dataset splits and missing-modality evaluation protocol** on the **BraTS 2023 GLI** dataset. The four MRI modalities are **FLAIR, T1ce, T1, and T2**. Model-specific training configurations are described in the Training section below.
+
+| Split | Number of cases | File in this repository |
+| --- | ---: | --- |
+| Training | 875 | `datalist/train.txt` |
+| Validation | 125 | `datalist/val15splits.csv` |
+| Testing | 251 | `datalist/test15splits.csv` |
+
+- **Modality order:** `[FLAIR, T1ce, T1, T2]`, as used in the preprocessing code.
+- **Missing-modality setting:** All **15 non-empty combinations** of the four MRI modalities, from one available modality to all four. During training, an available-modality mask is randomly sampled for each case.
+- **Evaluation:** Dice scores are reported for **Whole Tumor (WT)**, **Tumor Core (TC)**, and **Enhancing Tumor (ET)**.
+- **Preprocessing:** The provided `preprocess.py` crops around the non-zero brain region, normalizes the images, and remaps segmentation label `4` to `3`.
+
 ## Requirements
 
 The code was tested with Python 3.10, PyTorch 2.5.1, CUDA 12.1, and Triton 3.1.0.
